@@ -12,37 +12,30 @@
 /**
  * Twig_NodeVisitorInterface is the interface the all node visitor classes must implement.
  *
- * @package    twig
- * @author     Fabien Potencier <fabien@symfony.com>
+ * @author Fabien Potencier <fabien@symfony.com>
  */
 interface Twig_NodeVisitorInterface
 {
     /**
      * Called before child nodes are visited.
      *
-     * @param Twig_NodeInterface $node The node to visit
-     * @param Twig_Environment   $env  The Twig environment instance
-     *
      * @return Twig_NodeInterface The modified node
      */
-    function enterNode(Twig_NodeInterface $node, Twig_Environment $env);
+    public function enterNode(Twig_NodeInterface $node, Twig_Environment $env);
 
     /**
      * Called after child nodes are visited.
      *
-     * @param Twig_NodeInterface $node The node to visit
-     * @param Twig_Environment   $env  The Twig environment instance
-     *
-     * @return Twig_NodeInterface The modified node
+     * @return Twig_NodeInterface|false The modified node or false if the node must be removed
      */
-    function leaveNode(Twig_NodeInterface $node, Twig_Environment $env);
+    public function leaveNode(Twig_NodeInterface $node, Twig_Environment $env);
 
     /**
      * Returns the priority for this visitor.
      *
      * Priority should be between -10 and 10 (0 is the default).
      *
-     * @return integer The priority level
+     * @return int The priority level
      */
-    function getPriority();
+    public function getPriority();
 }

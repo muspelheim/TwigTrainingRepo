@@ -9,13 +9,18 @@
  * file that was distributed with this source code.
  */
 
+@trigger_error('The Twig_Filter class is deprecated since version 1.12 and will be removed in 2.0. Use Twig_SimpleFilter instead.', E_USER_DEPRECATED);
+
 /**
  * Represents a template filter.
  *
- * @package    twig
- * @author     Fabien Potencier <fabien@symfony.com>
+ * Use Twig_SimpleFilter instead.
+ *
+ * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @deprecated since 1.12 (to be removed in 2.0)
  */
-abstract class Twig_Filter implements Twig_FilterInterface
+abstract class Twig_Filter implements Twig_FilterInterface, Twig_FilterCallableInterface
 {
     protected $options;
     protected $arguments = array();
@@ -24,8 +29,10 @@ abstract class Twig_Filter implements Twig_FilterInterface
     {
         $this->options = array_merge(array(
             'needs_environment' => false,
-            'needs_context'     => false,
-            'pre_escape'        => null,
+            'needs_context' => false,
+            'pre_escape' => null,
+            'preserves_safety' => null,
+            'callable' => null,
         ), $options);
     }
 
@@ -58,12 +65,20 @@ abstract class Twig_Filter implements Twig_FilterInterface
         if (isset($this->options['is_safe_callback'])) {
             return call_user_func($this->options['is_safe_callback'], $filterArgs);
         }
+    }
 
-        return array();
+    public function getPreservesSafety()
+    {
+        return $this->options['preserves_safety'];
     }
 
     public function getPreEscape()
     {
         return $this->options['pre_escape'];
+    }
+
+    public function getCallable()
+    {
+        return $this->options['callable'];
     }
 }

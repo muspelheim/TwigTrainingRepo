@@ -9,37 +9,54 @@
  * file that was distributed with this source code.
  */
 
+@trigger_error('The Twig_Loader_String class is deprecated since version 1.18.1 and will be removed in 2.0. Use Twig_Loader_Array instead or Twig_Environment::createTemplate().', E_USER_DEPRECATED);
+
 /**
  * Loads a template from a string.
+ *
+ * This loader should NEVER be used. It only exists for Twig internal purposes.
  *
  * When using this loader with a cache mechanism, you should know that a new cache
  * key is generated each time a template content "changes" (the cache key being the
  * source code of the template). If you don't want to see your cache grows out of
  * control, you need to take care of clearing the old cache file by yourself.
  *
- * @package    twig
- * @author     Fabien Potencier <fabien@symfony.com>
+ * @deprecated since 1.18.1 (to be removed in 2.0)
+ *
+ * @internal
+ *
+ * @author Fabien Potencier <fabien@symfony.com>
  */
-class Twig_Loader_String implements Twig_LoaderInterface
+class Twig_Loader_String implements Twig_LoaderInterface, Twig_ExistsLoaderInterface, Twig_SourceContextLoaderInterface
 {
     /**
-     * Gets the source code of a template, given its name.
-     *
-     * @param  string $name The name of the template to load
-     *
-     * @return string The template source code
+     * {@inheritdoc}
      */
     public function getSource($name)
     {
+        @trigger_error(sprintf('Calling "getSource" on "%s" is deprecated since 1.27. Use getSourceContext() instead.', get_class($this)), E_USER_DEPRECATED);
+
         return $name;
     }
 
     /**
-     * Gets the cache key to use for the cache for a given template name.
-     *
-     * @param  string $name The name of the template to load
-     *
-     * @return string The cache key
+     * {@inheritdoc}
+     */
+    public function getSourceContext($name)
+    {
+        return new Twig_Source($name, $name);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function exists($name)
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getCacheKey($name)
     {
@@ -47,10 +64,7 @@ class Twig_Loader_String implements Twig_LoaderInterface
     }
 
     /**
-     * Returns true if the template is still fresh.
-     *
-     * @param string    $name The template name
-     * @param timestamp $time The last modification time of the cached template
+     * {@inheritdoc}
      */
     public function isFresh($name, $time)
     {

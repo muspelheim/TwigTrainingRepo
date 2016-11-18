@@ -13,8 +13,7 @@
 /**
  * Represents a block node.
  *
- * @package    twig
- * @author     Fabien Potencier <fabien@symfony.com>
+ * @author Fabien Potencier <fabien@symfony.com>
  */
 class Twig_Node_Block extends Twig_Node
 {
@@ -23,11 +22,6 @@ class Twig_Node_Block extends Twig_Node
         parent::__construct(array('body' => $body), array('name' => $name), $lineno, $tag);
     }
 
-    /**
-     * Compiles the node to PHP.
-     *
-     * @param Twig_Compiler A Twig_Compiler instance
-     */
     public function compile(Twig_Compiler $compiler)
     {
         $compiler

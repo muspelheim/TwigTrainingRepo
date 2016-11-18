@@ -17,26 +17,20 @@
  * source code of the template). If you don't want to see your cache grows out of
  * control, you need to take care of clearing the old cache file by yourself.
  *
- * @package    twig
- * @author     Fabien Potencier <fabien@symfony.com>
+ * This loader should only be used for unit testing.
+ *
+ * @author Fabien Potencier <fabien@symfony.com>
  */
-class Twig_Loader_Array implements Twig_LoaderInterface
+class Twig_Loader_Array implements Twig_LoaderInterface, Twig_ExistsLoaderInterface, Twig_SourceContextLoaderInterface
 {
-    protected $templates;
+    protected $templates = array();
 
     /**
-     * Constructor.
-     *
      * @param array $templates An array of templates (keys are the names, and values are the source code)
-     *
-     * @see Twig_Loader
      */
-    public function __construct(array $templates)
+    public function __construct(array $templates = array())
     {
-        $this->templates = array();
-        foreach ($templates as $name => $template) {
-            $this->templates[$name] = $template;
-        }
+        $this->templates = $templates;
     }
 
     /**
@@ -51,14 +45,12 @@ class Twig_Loader_Array implements Twig_LoaderInterface
     }
 
     /**
-     * Gets the source code of a template, given its name.
-     *
-     * @param  string $name The name of the template to load
-     *
-     * @return string The template source code
+     * {@inheritdoc}
      */
     public function getSource($name)
     {
+        @trigger_error(sprintf('Calling "getSource" on "%s" is deprecated since 1.27. Use getSourceContext() instead.', get_class($this)), E_USER_DEPRECATED);
+
         $name = (string) $name;
         if (!isset($this->templates[$name])) {
             throw new Twig_Error_Loader(sprintf('Template "%s" is not defined.', $name));
@@ -68,11 +60,28 @@ class Twig_Loader_Array implements Twig_LoaderInterface
     }
 
     /**
-     * Gets the cache key to use for the cache for a given template name.
-     *
-     * @param  string $name The name of the template to load
-     *
-     * @return string The cache key
+     * {@inheritdoc}
+     */
+    public function getSourceContext($name)
+    {
+        $name = (string) $name;
+        if (!isset($this->templates[$name])) {
+            throw new Twig_Error_Loader(sprintf('Template "%s" is not defined.', $name));
+        }
+
+        return new Twig_Source($this->templates[$name], $name);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function exists($name)
+    {
+        return isset($this->templates[(string) $name]);
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getCacheKey($name)
     {
@@ -85,10 +94,7 @@ class Twig_Loader_Array implements Twig_LoaderInterface
     }
 
     /**
-     * Returns true if the template is still fresh.
-     *
-     * @param string    $name The template name
-     * @param timestamp $time The last modification time of the cached template
+     * {@inheritdoc}
      */
     public function isFresh($name, $time)
     {
