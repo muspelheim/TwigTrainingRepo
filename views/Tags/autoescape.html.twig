@@ -1,0 +1,41 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {% autoescape %}
+            Everything will be automatically escaped in this block
+            using the HTML strategy
+        {% endautoescape %}
+    </p>
+    <p>
+        {% autoescape 'html' %}
+            Everything will be automatically escaped in this block
+            using the HTML strategy
+        {% endautoescape %}
+    </p>
+    <p>
+        {% autoescape 'js' %}
+            Everything will be automatically escaped in this block
+            using the js escaping strategy
+        {% endautoescape %}
+    </p>
+    <p>
+        {% autoescape false %}
+            Everything will be outputted as is in this block
+        {% endautoescape %}
+    </p>
+    {% set safe_value = '<b>test</b>' %}
+    <p>
+        {% autoescape %}
+            {{ safe_value|raw }}<br>
+            {{ safe_value }}
+        {% endautoescape %}
+    </p>
+
+    <p>
+        Twig does not escape static expressions:
+        {% set hello = "<strong>Hello</strong>" %}
+        {{ hello }}
+        {{ "<strong>world</strong>" }}
+    </p>
+{% endblock sample %}

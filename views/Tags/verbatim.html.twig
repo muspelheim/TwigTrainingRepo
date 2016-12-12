@@ -1,0 +1,13 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+    {% verbatim %}
+        <ul>
+        {% for item in seq %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+    {% endverbatim %}
+    </p>
+{% endblock sample %}

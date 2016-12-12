@@ -1,0 +1,34 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {% with %}
+        {% set foo = 42 %}
+        {{ foo }} foo here<br>
+        {% endwith %}
+        foo is not visible here any longer: {{ foo }}<br>
+    </p>
+
+    <p>
+        {% with { foo: 42 } %}
+        {{ foo }}           foo is 42 here<br>
+        {% endwith %}
+        foo is not visible here any longer
+        <br><br>
+        it works with any expression that resolves to a hash
+        <br>
+        {% set vars = { foo: 42 } %}
+        {% with vars %}
+         {{ vars }}
+        {% endwith %}
+        vars {{ vars }}
+    </p>
+
+    <p>
+        {% set bar = 'bar' %}
+        {% with { foo: 42 } only %}
+        only foo is defined: {{ foo }}
+        bar is not defined {{ bar }}
+        {% endwith %}
+    </p>
+{% endblock sample %}

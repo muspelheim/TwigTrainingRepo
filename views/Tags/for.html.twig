@@ -1,0 +1,111 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+    {% set users = range(0,3) %}
+    <h1>Members</h1>
+    <ul>
+        {% for user in users %}
+            <li>{{ user|e }}</li>
+        {% endfor %}
+    </ul>
+    </p>
+    <p>
+        {% for i in 0..10 %}
+            * {{ i }}
+        {% endfor %}
+    </p>
+    <p>
+        {% for letter in 'a'..'z' %}
+            * {{ letter }}
+        {% endfor %}
+    </p>
+    <p>
+        {% for letter in 'a'|upper..'z'|upper %}
+            * {{ letter }}
+        {% endfor %}
+    </p>
+    <p>
+        <table border="1" class="docutils">
+            <colgroup>
+                <col width="26%">
+                <col width="74%">
+            </colgroup>
+            <thead valign="bottom">
+            <tr class="row-odd"><th class="head">Variable</th>
+                <th class="head">Description</th>
+            </tr>
+            </thead>
+            <tbody valign="top">
+            <tr class="row-even"><td><code class="notranslate">loop.index</code></td>
+                <td>The current iteration of the loop. (1 indexed)</td>
+            </tr>
+            <tr class="row-odd"><td><code class="notranslate">loop.index0</code></td>
+                <td>The current iteration of the loop. (0 indexed)</td>
+            </tr>
+            <tr class="row-even"><td><code class="notranslate">loop.revindex</code></td>
+                <td>The number of iterations from the end of the loop (1 indexed)</td>
+            </tr>
+            <tr class="row-odd"><td><code class="notranslate">loop.revindex0</code></td>
+                <td>The number of iterations from the end of the loop (0 indexed)</td>
+            </tr>
+            <tr class="row-even"><td><code class="notranslate">loop.first</code></td>
+                <td>True if first iteration</td>
+            </tr>
+            <tr class="row-odd"><td><code class="notranslate">loop.last</code></td>
+                <td>True if last iteration</td>
+            </tr>
+            <tr class="row-even"><td><code class="notranslate">loop.length</code></td>
+                <td>The number of items in the sequence</td>
+            </tr>
+            <tr class="row-odd"><td><code class="notranslate">loop.parent</code></td>
+                <td>The parent context</td>
+            </tr>
+            </tbody>
+        </table>
+
+        {% for user in users %}
+            {{ loop.index }} - {{ user }}
+        {% endfor %}
+    </p>
+    <p>
+        <ul>
+            {% for user in users if user %}
+                <li>{{ user|e }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+    <p>
+        <ul>
+            {% for user in users %}
+                <li>{{ user|e }}</li>
+            {% else %}
+                <li><em>no user found</em></li>
+            {% endfor %}
+        </ul>
+    </p>
+    <p>
+        <h1>Members</h1>
+        <ul>
+            {% for key in users|keys %}
+                <li>{{ key }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+    <p>
+        <h1>Members</h1>
+        <ul>
+            {% for key, user in users %}
+                <li>{{ key }}: {{ user|e }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+    <p>
+        <h1>Top 3 Members</h1>
+        <ul>
+            {% for user in users|slice(0, 3) %}
+                <li>{{ user|e }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+{% endblock sample %}
