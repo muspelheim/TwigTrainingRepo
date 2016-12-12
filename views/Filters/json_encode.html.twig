@@ -1,0 +1,11 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {% set data = ['apple', 'orange', 2, 3, 4] %}
+
+        {{ data|json_encode() }}
+
+        {{ data|json_encode(constant('JSON_PRETTY_PRINT')) }}
+    </p>
+{% endblock sample %}

@@ -1,0 +1,33 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {% include 'Tags/slices/header.html' %}
+        Body
+        {% include 'Tags/slices/footer.html' %}
+    </p>
+    <p>
+        {# template.html will have access to the variables from the current context and the additional ones provided #}
+        {% include 'Tags/slices/template.html' with {'foo': 'bar'} %}
+    </p>
+    <p>
+        {% set vars = {'foo2': 'bar2'} %}
+        {% include 'Tags/slices/template.html' with vars %}
+    </p>
+    <p>
+        {# only the foo variable will be accessible #}
+        {% include 'Tags/slices/template.html' with {'foo3': 'bar3'} only %}
+    </p>
+    <p>
+        {# no variables will be accessible #}
+        {% include 'Tags/slices/template.html' only %}
+    </p>
+    <p>
+        {% include 'sidebar.html' ignore missing %}
+        {% include 'sidebar.html' ignore missing with {'foo': 'bar'} %}
+        {% include 'sidebar.html' ignore missing only %}
+    </p>
+    <p>
+        {% include ['Tags/slices/test.html', 'Tags/slices/footer.html'] %}
+    </p>
+{% endblock sample %}

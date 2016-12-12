@@ -1,0 +1,14 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {{ 42.55|round }}
+        {# outputs 43 #}
+        {{ 42.55|round(1, 'floor') }}
+        {# outputs 42.5 #}
+        {{ 42.55|round(1, 'common') }}
+        {{ 42.55|round(1, 'ceil') }}
+        {{ 42 // 42.60  }}
+
+    </p>
+{% endblock sample %}

@@ -8,7 +8,7 @@ function getListFiles(&$all_files, $folder = './views')
     $fp = opendir($folder);
     while ($cv_file = readdir($fp)) {
         if (is_file($folder . "/" . $cv_file)) {
-
+            //TODO add filter for html files
             $all_files[$folder][] = [
                 'path' => str_ireplace('./views/', '', $folder . "/" . $cv_file),
                 'file' => $cv_file,

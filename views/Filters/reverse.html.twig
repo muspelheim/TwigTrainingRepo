@@ -1,0 +1,23 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {{ '1234'|reverse }}
+
+        {# outputs 4321 #}
+    </p>
+
+    <p>
+        {% for key, value in {1: "a", 2: "b", 3: "c"}|reverse %}
+            {{ key }}: {{ value }}
+        {%- endfor %}
+
+        {# output: 0: c    1: b    2: a #}
+
+        {% for key, value in {1: "a", 2: "b", 3: "c"}|reverse(true) %}
+            {{ key }}: {{ value }}
+        {%- endfor %}
+
+        {# output: 3: c    2: b    1: a #}
+    </p>
+{% endblock sample %}

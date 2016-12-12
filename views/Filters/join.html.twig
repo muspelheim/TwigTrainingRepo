@@ -1,0 +1,12 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {{ [1, 2, 3]|join }}
+        {# returns 123 #}
+    </p>
+    <p>
+        {{ [1, 2, 3]|join('|') }}
+        {# outputs 1|2|3 #}
+    </p>
+{% endblock sample %}

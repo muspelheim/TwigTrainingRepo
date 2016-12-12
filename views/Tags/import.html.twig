@@ -1,0 +1,22 @@
+{% extends 'index.html.twig' %}
+
+{% import "Tags/macro/form_macro.html.twig" as forms %}
+{% from "Tags/macro/form_macro.html.twig" import wrapped_input as input_field, textarea %}
+
+{% block sample %}
+    <dl>
+        <dt>Username</dt>
+        <dd>{{ forms.input('username') }}</dd>
+        <dt>Password</dt>
+        <dd>{{ forms.input('password', null, 'password') }}</dd>
+    </dl>
+    <p>{{ forms.textarea('comment') }}</p>
+
+    <dl>
+        <dt>Username</dt>
+        <dd>{{ input_field('username') }}</dd>
+        <dt>Password</dt>
+        <dd>{{ textarea('password') }}</dd>
+    </dl>
+    <p>{{ textarea('comment') }}</p>
+{% endblock sample %}

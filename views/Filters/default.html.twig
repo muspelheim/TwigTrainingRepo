@@ -1,0 +1,16 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {{ var|default('var is not defined') }}
+
+        {{ var.foo|default('foo item on var is not defined') }}
+
+        {{ var['foo']|default('foo item on var is not defined') }}
+
+        {{ ''|default('passed var is empty')  }}
+    </p>
+    <p>
+        {{ var.method(foo|default('foo'))|default('foo') }}
+    </p>
+{% endblock sample %}

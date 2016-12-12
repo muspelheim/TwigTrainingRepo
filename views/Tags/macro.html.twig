@@ -1,0 +1,9 @@
+{% extends 'index.html.twig' %}
+
+{% import "Tags/macro/form_macro.html.twig" as forms %}
+
+{% block sample %}
+    <p>{{ forms.input('username') }}</p>
+    <p>{{ forms.input('password', null, 'password') }}</p>
+    <p>{{ forms.wrapped_input('test') }}</p>
+{% endblock sample %}

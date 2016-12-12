@@ -1,0 +1,14 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {{ "path-seg*ment"|url_encode }}
+        {# outputs "path-seg%2Ament" #}
+
+        {{ "string with spaces"|url_encode }}
+        {# outputs "string%20with%20spaces" #}
+
+        {{ {'param': 'value', 'foo': 'bar'}|url_encode }}
+        {# outputs "param=value&foo=bar" #}
+    </p>
+{% endblock sample %}

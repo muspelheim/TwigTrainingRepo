@@ -1,0 +1,13 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {{ '  I like Twig.  '|trim }}
+
+        {# outputs 'I like Twig.' #}
+
+        {{ '  I like Twig.'|trim('.') }}
+
+        {# outputs '  I like Twig' #}
+    </p>
+{% endblock sample %}
