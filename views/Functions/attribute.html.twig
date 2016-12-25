@@ -6,6 +6,8 @@
         {{ attribute(object, 'getFoo') }}
         {{ attribute(object, 'setFoo', 'foo') }}
         {{ attribute(object, 'getFoo') }}
+        {# equivalent to the non-working foo.data-foo #}
+        {{ attribute(object, 'data-foo') }}
     </p>
     <p>
         {{ attribute(object, 'getFoo') is defined ? 'Method exists' : 'Method does not exist' }}
@@ -18,6 +20,9 @@
         {{ attribute(object, 'getFoo') }}
         {{ attribute(object, 'setFoo', 'foo') }}
         {{ attribute(object, 'getFoo') }}
+
+        {# equivalent to the non-working foo.data-foo #}
+        {{ attribute(object, 'data-foo') }}
     </p>
     <p>
         {{ attribute(object, 'getFoo') is defined ? 'Method exists' : 'Method does not exist' }}

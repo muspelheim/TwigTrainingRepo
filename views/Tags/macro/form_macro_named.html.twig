@@ -1,0 +1,3 @@
+{% macro textarea(name, value, rows, cols) %}
+    <textarea name="{{ name }}" rows="{{ rows|default(10) }}" cols="{{ cols|default(40) }}" style="background: #a4c9ff">{{ value|e }}</textarea>
+{% endmacro %}

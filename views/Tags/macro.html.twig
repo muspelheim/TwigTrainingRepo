@@ -1,17 +1,23 @@
 {% extends 'index.html.twig' %}
 
-{% import "Tags/macro/form_macro.html.twig" as forms %}
-
 {% block code %}
 {% verbatim %}
+    <p>{% import "Tags/macro/form_macro.html.twig" as forms %}</p>
+    <p>{% from "Tags/macro/form_macro_named.html.twig" import named_textarea as textarea %}</p>
     <p>{{ forms.input('username') }}</p>
     <p>{{ forms.input('password', null, 'password') }}</p>
     <p>{{ forms.wrapped_input('test') }}</p>
+    <p>{{ forms.textarea('test') }}</p>
+    <p>{{ named_textarea('tesst') }}</p>
 {% endverbatim %}
 {% endblock code %}
 
 {% block sample %}
+    {% import "Tags/macro/form_macro.html.twig" as forms %}
+    {% from "Tags/macro/form_macro_named.html.twig" import textarea as named_textarea %}
     <p>{{ forms.input('username') }}</p>
     <p>{{ forms.input('password', null, 'password') }}</p>
     <p>{{ forms.wrapped_input('test') }}</p>
+    <p>{{ forms.textarea('test') }}</p>
+    <p>{{ named_textarea('text') }}</p>
 {% endblock sample %}

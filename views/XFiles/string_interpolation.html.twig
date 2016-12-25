@@ -1,0 +1,29 @@
+{% extends 'index.html.twig' %}
+
+{% block code %}
+    {% verbatim %}
+        <p>
+            {{ "foo #{bar} baz" }}
+        </p>
+        <p>
+            {% set bar = 'bar' %}
+            {{ "foo #{bar} baz" }}
+        </p>
+        <p>
+            {{ "foo #{1 + 2} baz" }}
+        </p>
+    {% endverbatim %}
+{% endblock code %}
+
+{% block sample %}
+    <p>
+        {{ "foo #{bar} baz" }}
+    </p>
+    <p>
+        {% set bar = 'bar' %}
+        {{ "foo #{bar} baz" }}
+    </p>
+    <p>
+        {{ "foo #{1 + 2} baz" }}
+    </p>
+{% endblock sample %}

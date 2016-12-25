@@ -8,6 +8,15 @@
         <p>Our website is in maintenance mode. Please, come back later.</p>
     {% endif %}
     </p>
+        <p>
+        {% if 'Fabien' starts with 'F' %}
+            {{ 'f' }}
+        {% endif %}
+
+        {% if 'Fabien' ends with 'n' %}
+            {{ 'n' }}
+        {% endif %}
+    </p>
     <p>
     {% if users %}
         <ul>
@@ -46,6 +55,15 @@
     {% if online == false %}
         <p>Our website is in maintenance mode. Please, come back later.</p>
     {% endif %}
+    </p>
+    <p>
+        {% if 'Fabien' starts with 'F' %}
+            {{ 'f' }}
+        {% endif %}
+
+        {% if 'Fabien' ends with 'n' %}
+            {{ 'n' }}
+        {% endif %}
     </p>
     <p>
     {% if users %}

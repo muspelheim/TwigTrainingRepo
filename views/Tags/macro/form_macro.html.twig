@@ -1,15 +1,15 @@
 {% macro input(name, value, type, size) %}
-    <input type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" size="{{ size|default(20) }}" />
+    <input type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" size="{{ size|default(20) }}" style="color: darkred" />
 {% endmacro %}
 
 {% macro textarea(name, value, rows, cols) %}
-    <textarea name="{{ name }}" rows="{{ rows|default(10) }}" cols="{{ cols|default(40) }}">{{ value|e }}</textarea>
+    <textarea name="{{ name }}" rows="{{ rows|default(10) }}" cols="{{ cols|default(40) }}" style="background: #81ffad">{{ value|e }}</textarea>
 {% endmacro %}
 
 {% macro wrapped_input(name, value, type, size) %}
     {% import _self as forms %}
 
-    <div class="field">
+    <div class="field" style="background: #ffcece">
         {{ forms.input(name, value, type, size) }}
     </div>
 {% endmacro %}

@@ -12,7 +12,7 @@ function getListFiles(&$all_files, $folder = './views', &$depth = 0)
         if (is_file($folder . "/" . $cv_file)) {
             $all_files[$folder][] = [
                 'path' => str_ireplace('./views/', '', $folder . "/" . $cv_file),
-                'file' => $cv_file,
+                'file' => str_ireplace('.html.twig', '', $cv_file),
             ];
 
         } elseif ($cv_file != "." && $cv_file != ".." && is_dir($folder . "/" . $cv_file) && $depth < 2) {
@@ -26,14 +26,12 @@ function getListFiles(&$all_files, $folder = './views', &$depth = 0)
 $all_files = [];
 getListFiles($all_files);
 unset($all_files['./views']);
-
+ksort($all_files);
 
 $loader = new Twig_Loader_Filesystem('views');
-
 $twig = new Twig_Environment($loader, array(
   'cache' => false,
 ));
-
 $twig->addExtension(new Twig_Extension_StringLoader());
 
 if (isset($_REQUEST['path'])) {
