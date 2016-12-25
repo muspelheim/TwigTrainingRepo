@@ -14,59 +14,36 @@
         </h2>
     {% endblock index %}
 
-    {% block code %}
-{% verbatim %}
-        {% if name is empty %}
-            {% set name = "test" %}
-        {% endif %}
-        <h1> Welcome {{ name }}</h1>
+    <pre style="overflow: auto;line-height: 1.3em;font-size: 14px;color: #fff;background-color: #232125;padding: 0.7em;">
+        {% spaceless %}
+            {% block code %}
+                Twig Certification Train Repo
+            {% endblock code %}
+        {% endspaceless %}
+    </pre>
 
-        <div style="">
-            {% for k, sample in samples %}
-                <div style="width: 24%; float: left;">
-                    <p>
-                        <b>{{ k }}</b>
-                    </p>
-                    {% if sample is iterable %}
-                        {% for k, item in sample %}
-                            <p style="margin-left:20px;">
-                                <a href="/index.php?path={{ item['path'] }}">
-                                    {{ item['file'] }}
-                                </a>
-                            </p>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-            {% endfor %}
-        </div>
-    {% endverbatim %}
-{% endblock code %}
-
-{% block sample %}
-        {% if name is empty %}
-            {% set name = "test" %}
-        {% endif %}
-        <h1> Welcome {{ name }}</h1>
-
-        <div style="">
-            {% for k, sample in samples %}
-                <div style="width: 24%; float: left;">
-                    <p>
-                        <b>{{ k }}</b>
-                    </p>
-                    {% if sample is iterable %}
-                        {% for k, item in sample %}
-                            <p style="margin-left:20px;">
-                                <a href="/index.php?path={{ item['path'] }}">
-                                    {{ item['file'] }}
-                                </a>
-                            </p>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-            {% endfor %}
-        </div>
-    {% endblock sample %}
+    <div style="overflow: auto;line-height: 1.3em;font-size: 14px;color: #000000;background-color: #efefef;padding: 0.7em;">
+        {% block sample %}
+            <div style="">
+                {% for k, sample in samples %}
+                    <div style="width: 24%; float: left;">
+                        <p>
+                            <b>{{ k|replace({'./views/': ''}) }}</b>
+                        </p>
+                        {% if sample is iterable %}
+                            {% for k, item in sample %}
+                                <p style="margin-left:20px;">
+                                    <a href="/index.php?path={{ item['path'] }}">
+                                        {{ item['file'] }}
+                                    </a>
+                                </p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endblock sample %}
+    </div>
 </div>
 <footer>
 
