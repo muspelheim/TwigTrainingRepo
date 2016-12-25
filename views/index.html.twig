@@ -20,20 +20,24 @@
         {% endif %}
         <h1> Welcome {{ name }}</h1>
 
-        {% for k, sample in samples %}
-            <p>
-                <b>{{ k }}</b>
-            </p>
-            {% if sample is iterable %}
-                {% for k, item in sample %}
-                    <p style="margin-left:20px;">
-                        <a href="/index.php?path={{ item['path'] }}">
-                            {{ item['file'] }}
-                        </a>
+        <div style="">
+            {% for k, sample in samples %}
+                <div style="width: 24%; float: left;">
+                    <p>
+                        <b>{{ k }}</b>
                     </p>
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
+                    {% if sample is iterable %}
+                        {% for k, item in sample %}
+                            <p style="margin-left:20px;">
+                                <a href="/index.php?path={{ item['path'] }}">
+                                    {{ item['file'] }}
+                                </a>
+                            </p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
     {% endblock sample %}
 </div>
 <footer>
