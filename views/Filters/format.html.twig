@@ -1,5 +1,20 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        Format filter its alias for REPLACE
+    </p>
+    <p>
+        {{ "I like %s and %s."|format(foo, "bar") }}
+    </p>
+    {% set foo = '11111' %}
+    <p>
+        {{ "I like %s and %s."|format(foo, "bar") }}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         Format filter its alias for REPLACE

@@ -1,5 +1,16 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {{ 2 is odd }}
+    </p>
+    <p>
+        {{ 3 is odd }}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {{ 2 is odd }}

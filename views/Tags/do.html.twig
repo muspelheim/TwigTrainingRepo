@@ -1,5 +1,13 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {% do 1 + 2 %}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {% do 1 + 2 %}

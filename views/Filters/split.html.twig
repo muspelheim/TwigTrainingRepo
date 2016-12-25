@@ -1,5 +1,20 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {% set foo = "one,two,three,four,five"|split(',', 3) %}
+        {# foo contains ['one', 'two', 'three,four,five'] #}
+
+        {% set foo = "123"|split('') %}
+        {# foo contains ['1', '2', '3'] #}
+
+        {% set bar = "aabbcc"|split('', 2) %}
+        {# bar contains ['aa', 'bb', 'cc'] #}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {% set foo = "one,two,three,four,five"|split(',', 3) %}

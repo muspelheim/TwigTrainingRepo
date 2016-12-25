@@ -1,5 +1,13 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {{ "I like %this% and %that%."| length }}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {{ "I like %this% and %that%."| length }}

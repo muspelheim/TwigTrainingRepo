@@ -2,6 +2,14 @@
 
 {% import "Tags/macro/form_macro.html.twig" as forms %}
 
+{% block code %}
+{% verbatim %}
+    <p>{{ forms.input('username') }}</p>
+    <p>{{ forms.input('password', null, 'password') }}</p>
+    <p>{{ forms.wrapped_input('test') }}</p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>{{ forms.input('username') }}</p>
     <p>{{ forms.input('password', null, 'password') }}</p>

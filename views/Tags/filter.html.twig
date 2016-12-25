@@ -1,5 +1,20 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {% filter upper %}
+            This text becomes uppercase
+        {% endfilter %}
+    </p>
+    <p>
+        {% filter lower|escape %}
+            <strong>SOME TEXT</strong>
+        {% endfilter %}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {% filter upper %}

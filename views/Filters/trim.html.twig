@@ -1,5 +1,19 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {{ '  I like Twig.  '|trim }}
+
+        {# outputs 'I like Twig.' #}
+
+        {{ '  I like Twig.'|trim('.') }}
+
+        {# outputs '  I like Twig' #}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {{ '  I like Twig.  '|trim }}

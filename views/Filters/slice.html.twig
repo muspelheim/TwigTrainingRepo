@@ -1,5 +1,39 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {% for i in [1, 2, 3, 4, 5]|slice(1, 2) %}
+            {# will iterate over 2 and 3 #}
+        {% endfor %}
+
+        {{ '12345'|slice(1, 2) }}
+
+        {# outputs 23 #}
+    </p>
+
+    <p>
+        {% for i in [1, 2, 3, 4, 5]|slice(start, length) %}
+            {# ... #}
+        {% endfor %}
+    </p>
+
+    <p>
+        {% for i in [1, 2, 3, 4, 5][start:length] %}
+            {{ i }}
+        {% endfor %}
+
+        {{ '12345'[1:2] }} {# will display "23" #}
+
+        {# you can omit the first argument -- which is the same as 0 #}
+        {{ '12345'[:2] }} {# will display "12" #}
+
+        {# you can omit the last argument -- which will select everything till the end #}
+        {{ '12345'[2:] }} {# will display "345" #}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {% for i in [1, 2, 3, 4, 5]|slice(1, 2) %}

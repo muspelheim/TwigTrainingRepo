@@ -1,5 +1,17 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {% set data = ['apple', 'orange', 2, 3, 4] %}
+
+        {{ data|json_encode() }}
+
+        {{ data|json_encode(constant('JSON_PRETTY_PRINT')) }}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {% set data = ['apple', 'orange', 2, 3, 4] %}

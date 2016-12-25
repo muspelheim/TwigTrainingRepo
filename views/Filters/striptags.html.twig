@@ -1,5 +1,14 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {% set some_html = '<h1>TEST</h1>' %}
+        {{ some_html|striptags }}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {% set some_html = '<h1>TEST</h1>' %}

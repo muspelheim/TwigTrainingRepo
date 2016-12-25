@@ -1,5 +1,17 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+    {% spaceless %}
+        <div>
+            <strong>foo</strong>
+        </div>
+    {% endspaceless %}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
     {% spaceless %}

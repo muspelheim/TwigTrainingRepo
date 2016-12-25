@@ -1,5 +1,19 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {{ 2 is even }}
+    </p>
+    <p>
+        {{ 3 is even }}
+    </p>
+    <p>
+        {{ 4 is even }}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {{ 2 is even }}

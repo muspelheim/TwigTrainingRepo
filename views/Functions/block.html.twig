@@ -1,5 +1,19 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {{ block('index') }}
+    </p>
+    <p>
+        {{ block('index') }}
+    </p>
+    <p>
+        {{ block('index') }}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {{ block('index') }}

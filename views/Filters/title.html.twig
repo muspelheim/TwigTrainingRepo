@@ -1,5 +1,14 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {{ 'my first car'|title }}
+        {# outputs 'My First Car' #}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {{ 'my first car'|title }}

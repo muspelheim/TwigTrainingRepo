@@ -3,6 +3,20 @@
 {% use "Tags/blocks/content.html.twig" %}
 {% use "Tags/blocks/content2.html.twig" with content as content2 %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {% block content %}
+            {{ parent() }}
+        {% endblock content %}
+    </p>
+
+    <p>
+        {{ block('content2') }}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {% block content %}

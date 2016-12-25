@@ -1,5 +1,18 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {{ [1, 2, 3]|join }}
+        {# returns 123 #}
+    </p>
+    <p>
+        {{ [1, 2, 3]|join('|') }}
+        {# outputs 1|2|3 #}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {{ [1, 2, 3]|join }}

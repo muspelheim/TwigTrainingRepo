@@ -1,5 +1,25 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {% set start_year = date() | date('Y') %}
+        {% set end_year = start_year + 5 %}
+
+        {% for year in start_year..end_year %}
+            {{ cycle(['odd', 'even'], loop.index0) }}
+        {% endfor %}
+    </p>
+    <p>
+        {% set fruits = ['apple', 'orange', 'citrus'] %}
+
+        {% for i in 0..10 %}
+            {{ cycle(fruits, i) }}
+        {% endfor %}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {% set start_year = date() | date('Y') %}

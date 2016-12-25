@@ -1,5 +1,59 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {% set foo = 'bar' %}
+        {{ foo }}
+    </p>
+    <p>
+        {% set foo = [1, 2] %}
+        {{ foo }}
+        {% set foo = {'foo': 'bar'} %}
+        {{ foo }}
+        {% set foo = 'foo' ~ 'bar' %}
+        {{ foo }}
+    </p>
+    <p>
+        {% set foo, bar = 'foo', 'bar' %}
+        {{ foo }}
+        {{ bar }}
+        {# is equivalent to #}
+        {% set foo = 'foo' %}
+        {% set bar = 'bar' %}
+    </p>
+    <p>
+    {% set foo %}
+        <div id="pagination">
+            ...
+        </div>
+    {% endset %}
+    {{ foo }}
+    </p>
+    <p>
+        {% set list = range(0, 5) %}
+        {% for item in list %}
+            {% set foo = item %}
+            {{ foo }}
+        {% endfor %}
+        {{ foo }}
+
+        {# foo is NOT available #}
+    </p>
+    <p>
+        {% set foo = "" %}
+        {% for item in list %}
+            {% set foo = item %}
+            {{ foo }}
+        {% endfor %}
+        {{ foo }}
+
+        {# foo is available #}
+    </p>
+
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {% set foo = 'bar' %}

@@ -14,7 +14,35 @@
         </h2>
     {% endblock index %}
 
-    {% block sample %}
+    {% block code %}
+{% verbatim %}
+        {% if name is empty %}
+            {% set name = "test" %}
+        {% endif %}
+        <h1> Welcome {{ name }}</h1>
+
+        <div style="">
+            {% for k, sample in samples %}
+                <div style="width: 24%; float: left;">
+                    <p>
+                        <b>{{ k }}</b>
+                    </p>
+                    {% if sample is iterable %}
+                        {% for k, item in sample %}
+                            <p style="margin-left:20px;">
+                                <a href="/index.php?path={{ item['path'] }}">
+                                    {{ item['file'] }}
+                                </a>
+                            </p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endverbatim %}
+{% endblock code %}
+
+{% block sample %}
         {% if name is empty %}
             {% set name = "test" %}
         {% endif %}

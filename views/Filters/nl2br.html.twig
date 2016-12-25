@@ -1,5 +1,19 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {{ "I like Twig.\nYou will like it too."|nl2br }}
+        {# outputs
+
+            I like Twig.<br />
+            You will like it too.
+
+        #}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {{ "I like Twig.\nYou will like it too."|nl2br }}

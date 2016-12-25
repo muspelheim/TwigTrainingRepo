@@ -1,5 +1,14 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    {% set name = 'Name' %}
+    <p>
+        {{ constant('TEST', object) }}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     {% set name = 'Name' %}
     <p>

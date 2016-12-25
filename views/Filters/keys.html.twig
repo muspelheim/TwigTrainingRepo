@@ -1,5 +1,16 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    {% set arr = { 'apple': 'fruit', 'orange': 'fruit' } %}
+    <p>
+        {% for key in arr|keys %}
+            {{ key }}
+        {% endfor %}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     {% set arr = { 'apple': 'fruit', 'orange': 'fruit' } %}
     <p>

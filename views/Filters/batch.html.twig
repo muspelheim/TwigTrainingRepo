@@ -1,5 +1,21 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    {% set items = ['a', 'b', 'c', 'd', 'e', 'f', 'g'] %}
+
+    <table>
+        {% for row in items|batch(3, 'No item') %}
+            <tr>
+                {% for column in row %}
+                    <td>{{ column }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     {% set items = ['a', 'b', 'c', 'd', 'e', 'f', 'g'] %}
 

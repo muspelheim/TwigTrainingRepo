@@ -1,5 +1,16 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {{ 200.35|number_format }}
+    </p>
+    <p>
+        {{ 9800.333|number_format(2, '.', ',') }}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {{ 200.35|number_format }}

@@ -1,5 +1,14 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    {% set data = 'apple' %}
+    <p>
+        {{ data|convert_encoding('UTF-8', 'iso-2022-jp') }}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     {% set data = 'apple' %}
     <p>

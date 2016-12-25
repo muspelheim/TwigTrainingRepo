@@ -1,5 +1,16 @@
 {% extends 'index.html.twig' %}
 
+{% block code %}
+{% verbatim %}
+    <p>
+        {{ "I like %this% and %that%."|replace({'%this%': foo, '%that%': "bar"}) }}
+
+        {# outputs I like foo and bar
+           if the foo parameter equals to the foo string. #}
+    </p>
+{% endverbatim %}
+{% endblock code %}
+
 {% block sample %}
     <p>
         {{ "I like %this% and %that%."|replace({'%this%': foo, '%that%': "bar"}) }}
