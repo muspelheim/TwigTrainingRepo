@@ -1,0 +1,28 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    {% set test = '<h1>test</h1>' %}
+    {% set testJs = 'document.getElementById("demo").innerHTML = z;' %}
+    {% set testCss = 'background-color: #000;' %}
+    {% set testUrl = 'http://twig.dev/index.php?path=Filters/escape.html.twig' %}
+    <p>
+        {{ test|escape }}
+        <br>
+        {{ test|e('html') }}
+    </p>
+    <p>
+        {{ testJs|escape('js') }}
+        <br>
+        {{ testJs|e('js') }}
+    </p>
+    <p>
+        {{ testCss|escape('css') }}
+        <br>
+        {{ testCss|e('css') }}
+    </p>
+    <p>
+        {{ testUrl|escape('url') }}
+        <br>
+        {{ testUrl|e('url') }}
+    </p>
+{% endblock sample %}

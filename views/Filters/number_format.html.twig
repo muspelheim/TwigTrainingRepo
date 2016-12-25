@@ -1,0 +1,10 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {{ 200.35|number_format }}
+    </p>
+    <p>
+        {{ 9800.333|number_format(2, '.', ',') }}
+    </p>
+{% endblock sample %}

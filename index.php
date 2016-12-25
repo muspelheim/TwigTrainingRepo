@@ -1,6 +1,7 @@
 <?php
 
 require_once('lib/Twig/Autoloader.php');
+require_once('SampleObject.php');
 Twig_Autoloader::register();
 
 function getListFiles(&$all_files, $folder = './views')
@@ -30,9 +31,12 @@ $twig = new Twig_Environment($loader, array(
   'cache' => false,
 ));
 
+$twig->addExtension(new Twig_Extension_StringLoader());
+
 if (isset($_REQUEST['path'])) {
     echo $twig->render($_REQUEST['path'], array(
         'samples'   => $all_files,
+        'object'    => new SampleObject('test', 'hello'),
     ));
 } else {
     echo $twig->render('index.html.twig', array(

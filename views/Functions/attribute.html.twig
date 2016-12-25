@@ -1,0 +1,12 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {{ attribute(object, 'getFoo') }}
+        {{ attribute(object, 'setFoo', 'foo') }}
+        {{ attribute(object, 'getFoo') }}
+    </p>
+    <p>
+        {{ attribute(object, 'getFoo') is defined ? 'Method exists' : 'Method does not exist' }}
+    </p>
+{% endblock sample %}

@@ -1,0 +1,30 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {# evaluates to true if the foo variable is iterable #}
+        {% set users = range(0,10) %}
+
+        {% if users is iterable %}
+            {% for user in users %}
+                Hello {{ user }}!
+            {% endfor %}
+        {% else %}
+            {# users is probably a string #}
+            Hello {{ users }}!
+        {% endif %}
+    </p>
+    <p>
+        {# evaluates to true if the foo variable is iterable #}
+        {% set users = 'Piotr' %}
+
+        {% if users is iterable %}
+            {% for user in users %}
+                Hello {{ user }}!
+            {% endfor %}
+        {% else %}
+            {# users is probably a string #}
+            Hello {{ users }}!
+        {% endif %}
+    </p>
+{% endblock sample %}

@@ -1,0 +1,26 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {% set values = [1, 2] %}
+
+        {% set values = values|merge(['apple', 'orange']) %}
+
+        {# values now contains [1, 2, 'apple', 'orange'] #}
+    </p>
+    <p>
+        {% set items = { 'apple': 'fruit', 'orange': 'fruit', 'peugeot': 'unknown' } %}
+
+        {% set items = items|merge({ 'peugeot': 'car', 'renault': 'car' }) %}
+
+        {# items now contains { 'apple': 'fruit', 'orange': 'fruit', 'peugeot': 'car', 'renault': 'car' } #}
+    </p>
+    <p>
+        {% set items = { 'apple': 'fruit', 'orange': 'fruit' } %}
+
+        {% set items = { 'apple': 'unknown' }|merge(items) %}
+
+        {# items now contains { 'apple': 'fruit', 'orange': 'fruit' } #}
+    </p>
+{% endblock sample %}
+

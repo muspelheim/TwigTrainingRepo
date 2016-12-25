@@ -1,0 +1,9 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {% if foo.attribute is same as(null) %}
+            the foo attribute really is the 'null' PHP value
+        {% endif %}
+    </p>
+{% endblock sample %}

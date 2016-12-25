@@ -1,0 +1,8 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    {% set name = 'Name' %}
+    <p>
+        {{ include(template_from_string("Hello {{ name }}")) }}
+    </p>
+{% endblock sample %}

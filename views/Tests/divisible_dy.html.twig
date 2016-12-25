@@ -1,0 +1,11 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {% for i in range(0, 30) %}
+            {% if loop.index is divisible by(3) %}
+                {{ loop.index }}
+            {% endif %}
+        {% endfor %}
+    </p>
+{% endblock sample %}

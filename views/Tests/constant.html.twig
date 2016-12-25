@@ -1,0 +1,9 @@
+{% extends 'index.html.twig' %}
+
+{% block sample %}
+    <p>
+        {% if 'hello twig' is constant('TEST', object) %}
+            the status attribute is exactly the same as object
+        {% endif %}
+    </p>
+{% endblock sample %}
