@@ -37,6 +37,7 @@ $twig->addExtension(new Twig_Extension_StringLoader());
 if (isset($_REQUEST['path'])) {
     echo $twig->render($_REQUEST['path'], array(
         'samples'   => $all_files,
+        'title'     => $_REQUEST['path'],
         'object'    => new SampleObject('test', 'hello'),
     ));
 } else {
