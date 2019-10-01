@@ -2,6 +2,7 @@
 
 require_once('lib/Twig/Autoloader.php');
 require_once('SampleObject.php');
+
 Twig_Autoloader::register();
 
 function getListFiles(&$all_files, $folder = './views', &$depth = 0)
@@ -25,13 +26,16 @@ function getListFiles(&$all_files, $folder = './views', &$depth = 0)
 
 $all_files = [];
 getListFiles($all_files);
+
 unset($all_files['./views']);
 ksort($all_files);
 
 $loader = new Twig_Loader_Filesystem('views');
+
 $twig = new Twig_Environment($loader, array(
   'cache' => false,
 ));
+
 $twig->addExtension(new Twig_Extension_StringLoader());
 
 if (isset($_REQUEST['path'])) {
@@ -47,4 +51,3 @@ if (isset($_REQUEST['path'])) {
         'samples'   => $all_files,
     ));
 }
-
